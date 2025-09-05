@@ -1,0 +1,38 @@
+Proyecto SBS - Créditos y Depósitos
+
+Este proyecto procesa información de la Superintendencia de Banca, Seguros y AFP (SBS, Perú) sobre créditos directos y depósitos por oficinas de entidades financieras.
+
+Datos de entrada
+
+La data no está incluida en este repositorio. Para ejecutarlo correctamente, debes descargarla desde la web de la SBS: https://www.sbs.gob.pe/estadisticas-y-publicaciones/estadisticas-/sistema-financiero_
+
+Archivos necesarios:
+
+- var_1 (Bancos Múltiples)
+
+Ruta en la página:
+Banco Múltiple -> Alcance y Participación de Mercado -> Créditos Directos y Depósitos por Oficinas
+
+Descargar la data de cualquier año y mes.
+
+- var_2 (Empresas Financieras)
+
+Ruta en la página:
+Empresas Financieras -> Alcance y Participación de Mercado -> Créditos Directos y Depósitos por Oficinas
+
+Descargar la data de cualquier año y mes.
+
+Una vez descargados, coloca los archivos Excel en la carpeta Data/ del proyecto.
+
+Requisitos:
+Instalar dependencias con: pip install -r requirements.txt
+
+Ejecución:
+Correr el flujo principal: python flujo_test.py
+
+El resultado se consolidará en un archivo Data.parquet
+
+Nota:
+- Los datos son públicos y provienen de la SBS.
+- El objetivo es un ejercicio de procesamiento ETL con Python y Pandas
+- La carpeta Data/ no se incluye en GitHub para mantener el repositorio liviano

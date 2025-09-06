@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    triggers {
+        cron('H H L * *')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/LuiggiChia/etl-sbs-data-engineer.git'
+            }
+        }
+
+        stage('Setup') {
+            steps {
+                bat """
+                C:/Users/LUIGGI/AppData/Local/Programs/Python/Python311/python.exe -m venv venv
+                call venv\\Scripts\\activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                """
+            }
+        }
+
+        stage('Run ETL') {
+            steps {
+                bat """
+                call venv\\Scripts\\activate
+                python flujo_test.py
+                """
+            }
+        }
+
+        stage('Archive Output') {
+            steps {
+                archiveArtifacts artifacts: '**/*.parquet, **/*.xlsx', followSymlinks: false
+            }
+        }
+    }
+}

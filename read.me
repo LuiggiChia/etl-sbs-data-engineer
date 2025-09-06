@@ -32,6 +32,39 @@ Correr el flujo principal: python flujo_test.py
 
 El resultado se consolidará en un archivo Data.parquet
 
+Ejecución Automática con Jenkins
+
+Este proyecto incluye un pipeline de Jenkins que automatiza la ejecución del ETL:
+
+El pipeline está definido en el archivo Jenkinsfile en la raíz del repo.
+
+Configuración incluida:
+
+Creación del entorno virtual (venv)
+
+Instalación de dependencias
+
+Ejecución del script flujo_test.py
+
+Archivado de outputs (.parquet) como artefactos
+
+Trigger programado: último día de cada mes a las 14:30.
+
+Cómo usarlo
+
+Instala Jenkins en tu máquina o servidor.
+
+Crea un Pipeline apuntando a este repositorio.
+
+Jenkins detectará automáticamente el Jenkinsfile y configurará el pipeline.
+
+El parquet generado se puede descargar desde los artefactos de Jenkins.
+
+## Diagrama del Flujo ETL
+
+![ETL Flow](docs/etl_diagram.png)
+
+
 Nota:
 - Los datos son públicos y provienen de la SBS.
 - El objetivo es un ejercicio de procesamiento ETL con Python y Pandas
